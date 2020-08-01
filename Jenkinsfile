@@ -6,7 +6,7 @@ pipeline {
 
   }
   stages {
-    stage('check python version') {
+    stage('check python version and pip3 version') {
       parallel {
         stage('check python version and pip3 version') {
           steps {
@@ -15,18 +15,19 @@ pip3 --version'''
           }
         }
 
-        stage('check current directory') {
+        stage('getting branch name') {
           steps {
-            sh 'pwd'
+            sh 'echo \'Pulling...\' + env.BRANCH_NAME'
           }
         }
 
       }
     }
 
-    stage('check directory contents') {
+    stage('build image') {
+      agent any
       steps {
-        sh 'ls'
+        sh 'docker build -t 374191519168.dkr.ecr.us-east-2.amazonaws.com/smallcase-app:develop'
       }
     }
 
