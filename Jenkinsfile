@@ -57,5 +57,19 @@ pip3 --version'''
                }
            }
     }
+    
+    stage('Push image for staging/green deployment') {
+        when {
+                branch 'staging' 
+           }
+           steps {
+               script {
+                    docker.withRegistry('https://374191519168.dkr.ecr.us-east-2.amazonaws.com', 'ecr:us-east-2:awsContainerCredential') {
+                        sh "docker push 374191519168.dkr.ecr.us-east-2.amazonaws.com/smallcase-app:green"
+                    }
+               }
+           }
+    }
+
   }
 }
