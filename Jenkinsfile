@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    docker {
-      image 'python:3.8-alpine'
-    }
-
-  }
+  agent any
   stages {
     stage('check python version and pip3 version') {
       parallel {
@@ -25,7 +20,6 @@ pip3 --version'''
     }
 
     stage('build image') {
-      agent any
       steps {
         sh '''hostname
 
