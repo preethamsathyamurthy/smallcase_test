@@ -8,9 +8,10 @@ pipeline {
   stages {
     stage('check python version') {
       parallel {
-        stage('check python version') {
+        stage('check python version and pip3 version') {
           steps {
-            sh 'python3 --version'
+            sh '''python3 --version
+pip3 --version'''
           }
         }
 
