@@ -44,6 +44,11 @@ pip3 --version'''
         sh 'docker build -t 374191519168.dkr.ecr.us-east-2.amazonaws.com/smallcase-app:green .'
       }
     }
+    stage('Push image for development') {
+        docker.withRegistry('https://374191519168.dkr.ecr.us-east-2.amazonaws.com', 'ecr:us-east-2:awsContainerCredential') {
+            sh "docker push 374191519168.dkr.ecr.us-east-2.amazonaws.com/smallcase-app:develop"
+        }
+    }
 
   }
 }
