@@ -49,9 +49,11 @@ pip3 --version'''
         when {
                 branch 'develop' 
            }
-        docker.withRegistry('https://374191519168.dkr.ecr.us-east-2.amazonaws.com', 'ecr:us-east-2:awsContainerCredential') {
-            sh "docker push 374191519168.dkr.ecr.us-east-2.amazonaws.com/smallcase-app:develop"
-        }
+           steps {
+                docker.withRegistry('https://374191519168.dkr.ecr.us-east-2.amazonaws.com', 'ecr:us-east-2:awsContainerCredential') {
+                    sh "docker push 374191519168.dkr.ecr.us-east-2.amazonaws.com/smallcase-app:develop"
+                }
+           }
     }
     
 
