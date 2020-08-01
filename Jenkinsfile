@@ -1,11 +1,16 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'python:3.8-alpine'
+    }
+
+  }
   stages {
     stage('check python version') {
       parallel {
         stage('check python version') {
           steps {
-            sh 'python --version'
+            sh 'python3 --version'
           }
         }
 
