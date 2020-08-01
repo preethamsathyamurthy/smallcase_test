@@ -9,13 +9,7 @@ pipeline {
 pip3 --version'''
           }
         }
-
-        stage('getting branch name') {
-          steps {
-            sh 'echo \'Pulling...\' + env.BRANCH_NAME'
-          }
-        }
-
+        
         stage('get current directory and file contents') {
           steps {
             sh '''pwd
