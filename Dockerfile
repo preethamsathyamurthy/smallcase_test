@@ -8,4 +8,4 @@ RUN pip install -U pip
 RUN pip install -r /tmp/requirements.txt
 
 # copy over our app code into the docker image
-COPY ./app.py ./uwsgi.ini ./templates /app
+COPY ./app.py ./uwsgi.ini ./templates /app/
