@@ -25,6 +25,7 @@ pipeline {
         steps {
             bash '''
                     #!/bin/bash
+                    echo "its a shebang"
                     pwd
                     #copy the build folders into a specific directory
                     mkdir build
