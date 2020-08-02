@@ -26,7 +26,7 @@ pipeline {
             sh '''
                     #copy the build folders into a specific directory
                     mkdir build
-                    cp -t ./build app.py templates requirements.txt uwsgi.ini
+                    cp -t ./build app.py templates requirements.txt uwsgi.ini -r
                     cd ./build
                     #install virutal env
                     python3 -m venv projectEnv
