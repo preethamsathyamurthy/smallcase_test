@@ -24,6 +24,7 @@ pipeline {
     stage('Installing dependencies and building the app') {
         steps {
             sh '''
+                    #!/bin/bash
                     #copy the build folders into a specific directory
                     mkdir build
                     cp -t ./build app.py templates requirements.txt uwsgi.ini -r
