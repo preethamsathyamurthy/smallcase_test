@@ -9,4 +9,4 @@ RUN pip install -r /tmp/requirements.txt
 
 # copy over our app code
 #the requirements.txt file is copied twice
-COPY ./app.py ./uwsgi.ini /app/
+COPY . /app
