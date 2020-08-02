@@ -23,9 +23,7 @@ pipeline {
 
     stage('Installing dependencies and building the app') {
         steps {
-            bash '''
-                    #!/bin/bash
-                    echo "its a shebang"
+            bash '''#!/bin/bash
                     pwd
                     #copy the build folders into a specific directory
                     mkdir build
