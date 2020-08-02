@@ -136,6 +136,9 @@ pipeline {
         sh 'kubectl apply -k ./kubernetesConfigurations/develop'
         sh 'sleep 2m'
         sh 'kubectl rollout restart deployment smallcase-flask -n smallcase-develop'
+        sh '''
+            kubectl describe ingress -n smallcase-develop smallcase-flask | awk '/Address: /{print $2}'
+           '''
       }
     }
 
@@ -148,6 +151,9 @@ pipeline {
         sh 'kubectl apply -k ./kubernetesConfigurations/staging'
         sh 'sleep 2m'
         sh 'kubectl rollout restart deployment smallcase-flask -n smallcase-green'
+        sh '''
+            kubectl describe ingress -n smallcase-green smallcase-flask | awk '/Address: /{print $2}'
+           '''
       }
     }
 
@@ -160,6 +166,9 @@ pipeline {
         sh 'kubectl apply -k ./kubernetesConfigurations/production'
         sh 'sleep 2m'
         sh 'kubectl rollout restart deployment smallcase-flask -n smallcase-blue'
+        sh '''
+            kubectl describe ingress -n smallcase-blue smallcase-flask | awk '/Address: /{print $2}'
+           '''
       }
     }
 
