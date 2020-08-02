@@ -7,6 +7,5 @@ COPY ./requirements.txt /tmp/
 RUN pip install -U pip
 RUN pip install -r /tmp/requirements.txt
 
-# copy over our app code
-#the requirements.txt file is copied twice
-COPY ./app.py ./uwsgi.ini /app
+# copy over our app code into the docker image
+COPY ./app.py ./uwsgi.ini ./templates /app
