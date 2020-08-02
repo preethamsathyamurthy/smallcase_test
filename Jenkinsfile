@@ -119,9 +119,39 @@ pipeline {
         }
     }
 
-    stage('check kubectl') {
+    stage('Deploy Image in develop') {
+      when {
+                branch 'develop' 
+        }
         steps {
-        sh 'kubectl get nodes'
+        sh 'kubectl apply -f ./kubernetesConfigurations/develop/namespace.yaml'
+        sh 'kubectl apply -k ./kubernetesConfigurations/develop'
+        sh 'sleep 2m'
+        sh 'kubectl rollout restart deployment smallcase-flask -n smallcase-develop'
+      }
+    }
+
+    stage('Deploy Image in staging') {
+      when {
+                branch 'staging' 
+        }
+        steps {
+        sh 'kubectl apply -f ./kubernetesConfigurations/staging/namespace.yaml'
+        sh 'kubectl apply -k ./kubernetesConfigurations/staging'
+        sh 'sleep 2m'
+        sh 'kubectl rollout restart deployment smallcase-flask -n smallcase-green'
+      }
+    }
+
+    stage('Deploy Image in develop') {
+      when {
+                branch 'master' 
+        }
+        steps {
+        sh 'kubectl apply -f ./kubernetesConfigurations/production/namespace.yaml'
+        sh 'kubectl apply -k ./kubernetesConfigurations/production'
+        sh 'sleep 2m'
+        sh 'kubectl rollout restart deployment smallcase-flask -n smallcase-blue'
       }
     }
 
