@@ -52,6 +52,14 @@ pipeline {
                 '''
         }
     }
+
+    stage('remove the build folder') {
+        steps {
+            sh '''
+                   rm -r build
+                '''
+        }
+    }
         
     stage('build image for development') {
       when {
