@@ -23,7 +23,7 @@ pipeline {
 
     stage('Installing dependencies and building the app') {
         steps {
-            bash '''#!/bin/bash
+            sh '''#!/bin/bash
                     pwd
                     #copy the build folders into a specific directory
                     mkdir build
