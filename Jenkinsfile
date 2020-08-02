@@ -35,7 +35,7 @@ pipeline {
                     python3 -m venv projectEnv
                     pwd
                     #login to virtualenv
-                    source projectEnv/bin/activate
+                    source ./projectEnv/bin/activate
                     #to ensure that our packages will install even if they are missing wheel archives
                     pip install wheel
                     #installing dependencies
