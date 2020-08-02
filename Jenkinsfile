@@ -131,7 +131,7 @@ pipeline {
       }
     }
 
-    stage('Deploy Image in staging') {
+    stage('Deploy Image in staging/ Green Deployment') {
       when {
                 branch 'staging' 
         }
@@ -143,7 +143,7 @@ pipeline {
       }
     }
 
-    stage('Deploy Image in develop') {
+    stage('Deploy Image in production/ Blue Deployment') {
       when {
                 branch 'master' 
         }
