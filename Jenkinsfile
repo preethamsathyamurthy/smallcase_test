@@ -25,12 +25,15 @@ pipeline {
         steps {
             sh '''
                     #!/bin/bash
+                    pwd
                     #copy the build folders into a specific directory
                     mkdir build
                     cp -t ./build app.py templates requirements.txt uwsgi.ini -r
                     cd ./build
+                    pwd
                     #install virutal env
                     python3 -m venv projectEnv
+                    pwd
                     #login to virtualenv
                     source projectEnv/bin/activate
                     #to ensure that our packages will install even if they are missing wheel archives
